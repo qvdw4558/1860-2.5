@@ -167,7 +167,7 @@ label flipBit15ToZero                   //bit 15 is 1 and needs to be 0
     push argument 0
     push constant 32767   
     not                  
-    call Sys.xor
+    call Sys.xor 2
     goto END
 
 label one
