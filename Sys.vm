@@ -157,6 +157,7 @@ label zero                              //left most bit to be 0
     push argument 0
     push constant 0
     lt
+    not
     if-goto same_bit15                  //if already 0 leave as is
     push constant 32767                 //else change it to 0
     not                         
