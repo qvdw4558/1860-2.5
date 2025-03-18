@@ -98,8 +98,9 @@ function Sys.computeParity 2
     pop local 1
 
 label loop_start
-    push local 1                        //break loop when bitmask = 0100000000000000
-    push constant 0
+    push constant 10                     //break loop when bitmask = 0100000000000000
+    not
+    push local 1
     gt
     if-goto loop_end
 
@@ -155,8 +156,8 @@ function Sys.encode 0
     if-goto one
 
 label zero
-    push constant 0
     push argument 0
+    push constant 0
     lt          
     if-goto flipBit15ToZero
 
