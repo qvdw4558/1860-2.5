@@ -200,12 +200,8 @@ label END
 // file to Gradescope, as this will cause your submission to be
 // rejected.
 //
-//function Sys.init 0
-   // call Sys.encode 1
-
-//label WHILE
-   // goto WHILE
-    
 function Sys.init 0
-push constant 31
-call Sys.computeParity 1
+    call Sys.encode 1
+
+label WHILE
+    goto WHILE
