@@ -99,7 +99,7 @@ function Sys.computeParity 2
 
 label loop_start
     push local 1                        //break loop when bitmask = 0100000000000000
-    push constant 16384
+    push constant 8192
     gt
     if-goto loop_end
 
