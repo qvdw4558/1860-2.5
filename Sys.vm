@@ -123,6 +123,7 @@ label bitmask_shift                         //shifts the bitmask 1 to the left
     goto loop_start
 
 label loop_end
+    push local 0
     return
 
 
