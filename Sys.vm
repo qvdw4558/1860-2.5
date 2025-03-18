@@ -99,7 +99,7 @@ function Sys.computeParity 2
 
 label loop_start
     push local 1                        //break loop when bitmask = 0100000000000000
-    push constant 8192
+    push constant 16384
     gt
     if-goto loop_end
 
@@ -108,7 +108,6 @@ label loop_start
     and
     push constant 0
     eq
-    not
     if-goto bitmask_shift                   //if ith bit = 0 goto bitmask_shift 
                                             //else
     push local 0                            //flip parity
@@ -151,17 +150,7 @@ label loop_end
 function Sys.encode 0
     push argument 0
     call Sys.computeParity 1
-    if-goto zero
-
-label one                               //left most bit to be 1
-    push constant 0
-    push argument 0
-    lt
-    if-goto same_bit15                  //if already 1 leave as is
-    push constant 32767                 //else change it to a 1
-    not
-    add
-    goto END
+    if-goto one
 
 label zero                              //left most bit to be 0
     push argument 0
@@ -171,6 +160,16 @@ label zero                              //left most bit to be 0
     push constant 32767                 //else change it to 0
     not                         
     sub
+    goto END
+
+label one                               //left most bit to be 1
+    push constant 0
+    push argument 0
+    lt
+    if-goto same_bit15                  //if already 1 leave as is
+    push constant 32767                 //else change it to a 1
+    not
+    add
     goto END
 
 label same_bit15
