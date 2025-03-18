@@ -99,7 +99,7 @@ function Sys.computeParity 2
 
 label loop_start
     push local 1                        //break loop when bitmask = 0100000000000000
-    push constant 16384
+    push constant 0
     gt
     if-goto loop_end
 
@@ -200,8 +200,12 @@ label END
 // file to Gradescope, as this will cause your submission to be
 // rejected.
 //
-function Sys.init 0
-    call Sys.encode 1
+//function Sys.init 0
+   // call Sys.encode 1
 
-label WHILE
-    goto WHILE
+//label WHILE
+   // goto WHILE
+    
+function Sys.init 0
+push constant 31
+call Sys.computeParity 1
