@@ -153,30 +153,34 @@ function Sys.encode 0
     call Sys.computeParity 1
     if-goto one
 
-label zero                              //left most bit to be 0
+label zero                          //left most bit to be 0
     push argument 0
     push constant 0
-    lt
-    not
-    if-goto same_bit15                  //if already 0 leave as is
-    push constant 32767                 //else change it to 0
-    not                         
-    sub
+    lt    
+    if-goto flipBit15ToZero
+    goto same_bit15
+
+label flipBit15ToZero
+    push argument 0
+    push constant 32767  
+    not                  
+    sub                  
     goto END
 
-label one                               //left most bit to be 1
-    push constant 0
+label one                           //left most bit to be 1
     push argument 0
-    lt
-    if-goto same_bit15                  //if already 1 leave as is
-    push constant 32767                 //else change it to a 1
-    not
-    add
+    push constant 0
+    lt            
+    if-goto same_bit15
+
+    push argument 0
+    push constant 32767 
+    not                  
+    add                  
     goto END
 
 label same_bit15
     push argument 0
-    goto END
 
 label END
     return
