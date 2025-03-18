@@ -163,23 +163,18 @@ label zero
 
     goto same_bit15
 
-label flipBit15ToZero
+label flipBit15ToZero                   //bit 15 is 1 and needs to be 0
     push argument 0
     push constant 32767   
     not                  
-    sub
+    call Sys.xor
     goto END
 
 label one
-    push constant 0
-    push argument 0
-    lt
-    if-goto same_bit15
-
     push argument 0
     push constant 32767
     not
-    add
+    or
     goto END
 
 label same_bit15
